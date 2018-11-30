@@ -7,11 +7,13 @@ public class Main {
         Entity entity = new Entity();
         Class clazz = entity.getClass();
 
-        for (Method method: clazz.getDeclaredMethods()){
+        for (Method method : clazz.getDeclaredMethods()) {
             method.setAccessible(true);
-            System.out.print("Метод: " + method.getName());
-            Annotation[] annotations = method.getDeclaredAnnotations();
-            System.out.println(" -- Annotations: " + Arrays.toString(annotations));
+            System.out.println("Метод: " + method.getName());
+            for (Annotation annotation : method.getDeclaredAnnotations()) {
+                if (annotation != null)
+                    System.out.println("\tAnnotation: " + annotation.toString());
+            }
         }
     }
 }
